@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "beautiful": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
     "start": "nodemon --inspect src/index.js"
@@ -22,13 +23,25 @@
     "url": "https://github.com/quangdung861/nodejs_blog/issues"
   },
   "homepage": "https://github.com/quangdung861/nodejs_blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "express": "^4.18.2",
-    "express-handlebars": "^7.1.0"
+    "express-handlebars": "^7.1.0",
+    "mongoose": "^7.4.1"
   },
   "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^13.2.3",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0"
   }
 }
