@@ -2,7 +2,14 @@ const express = require('express');
 const router = express.Router();
 const courseController = require('../app/controllers/courseController');
 
-router.get('/create', courseController.create);
+router.get(
+  '/create',
+  // function (req, res, next) {
+  //   if (req.query.ve === "vevip") return next();
+  //   res.status(403).json({ message: "Access denied" });
+  // },
+  courseController.create,
+);
 router.post('/store', courseController.store);
 router.post('/handle-form-actions', courseController.handleFormActions);
 router.get('/:id/edit', courseController.edit);

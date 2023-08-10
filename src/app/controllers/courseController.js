@@ -21,11 +21,23 @@ class CourseController {
   store(req, res, next) {
     const formData = req.body;
     formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+
+    // Course.findOne({})
+    //   .sort({ _id: "desc" })
+    //   .then((lastestCourse) => {
+    //     formData._id = lastestCourse._id + 1;
+    //     const course = new Course(formData);
+    //     course
+    //       .save()
+    //       .then(() => res.redirect(`/`))
+    //       .catch(next);
+    //   });
+
     const course = new Course(formData);
     course
       .save()
       .then(() => res.redirect(`/`))
-      .catch((err) => {});
+      .catch(next);
   }
 
   // [GET] /courses/:id/edit
